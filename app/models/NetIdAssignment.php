@@ -92,6 +92,12 @@ class NetIdAssignment
         $json = json_encode($xml);
         $array = json_decode($json,TRUE);
 
+        if(empty($array)) {
+
+            throw new \Exception('Parsed XML Object cannot be empty');
+
+        }
+
         // NetId
         $NetId = new NetId();
         $NetId->setFromArray($array['NetIdAssignment']['NetId']);
