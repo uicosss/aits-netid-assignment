@@ -1,12 +1,13 @@
 {
     "name": "dpazuic/aits_netid_assignment",
     "description": "Package used to query AITS webservices for a person by NetID.",
-    "type": "project",
+    "type": "library",
     "require": {
         "vlucas/phpdotenv": "^3.3",
         "nesbot/carbon": "^2.16",
         "guzzlehttp/guzzle": "^6.3",
-        "monolog/monolog": "^1.24"
+        "monolog/monolog": "^1.24",
+        "php": ">5.6.0"
     },
     "license": "MIT",
     "authors": [
