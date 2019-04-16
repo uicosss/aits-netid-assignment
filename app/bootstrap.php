@@ -17,9 +17,3 @@ try {
     return $e->getMessage();
 
 }
-
-// Prepare Database Instance
-\App\utilities\config::write('db.driver', $_ENV['DATABASE_DRIVER']);
-\App\utilities\config::write('db.basename', $_ENV['DATABASE_BASENAME']);
-\App\utilities\config::write('db.user', $_ENV['DATABASE_USER']);
-\App\utilities\config::write('db.password', $_ENV['DATABASE_PASSWORD']);
