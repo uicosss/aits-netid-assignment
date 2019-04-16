@@ -1,0 +1,18 @@
+# Environment fils
+.env
+
+# Generated JSON
+*/**/data/**/*.json
+
+# CSV Extracts
+*.csv
+
+# Reserved Patterns
+__*
+/vendor/
+
+.DS_Store
+
+data/*
+
+.idea/*

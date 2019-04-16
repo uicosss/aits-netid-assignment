@@ -1,0 +1,26 @@
+{
+    "name": "dpazuic/summer_schedule_of_classes",
+    "description": "Package used to generate JSON with the schedule data of all classes available for summer session.",
+    "type": "project",
+    "require": {
+        "vlucas/phpdotenv": "^3.3",
+        "nesbot/carbon": "^2.16",
+        "guzzlehttp/guzzle": "^6.3",
+        "monolog/monolog": "^1.24"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "dpazuic",
+            "email": "dpaz@uic.edu"
+        }
+    ],
+    "autoload": {
+        "classmap": [
+            "app"
+        ],
+        "files": [
+            "app/bootstrap.php"
+        ]
+    }
+}
