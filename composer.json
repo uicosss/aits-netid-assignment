@@ -1,6 +1,6 @@
 {
-    "name": "dpazuic/summer_schedule_of_classes",
-    "description": "Package used to generate JSON with the schedule data of all classes available for summer session.",
+    "name": "dpazuic/aits_netid_assignment",
+    "description": "Package used to query AITS webservices for a person by NetID.",
     "type": "project",
     "require": {
         "vlucas/phpdotenv": "^3.3",
