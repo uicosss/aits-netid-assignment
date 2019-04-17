@@ -66,14 +66,20 @@ class AITS_NetId_Assignment
             $response = $e->getResponse();
             $responseBodyAsString = $response->getBody()->getContents();
 
-            print_r($responseBodyAsString);
-            echo PHP_EOL;
+            if(Utilities::is_cli()) {
+                print_r($responseBodyAsString);
+                echo PHP_EOL;
+            }
+
             Utilities::SaveToErrorLog($responseBodyAsString, 'error', 'error');
 
         } catch (\Exception $e) {
 
-            print_r($e->getMessage());
-            echo PHP_EOL;
+            if(Utilities::is_cli()) {
+                print_r($e->getMessage());
+                echo PHP_EOL;
+            }
+
             Utilities::SaveToErrorLog($e->getMessage(), 'warning', 'error');
 
         }
