@@ -85,7 +85,7 @@ class NetIdAssignment
      *
      * @param String $xml
      */
-    public function setFromXML(String $xml)
+    public function setFromXML($xml)
     {
 
         $xml = simplexml_load_string($xml);
