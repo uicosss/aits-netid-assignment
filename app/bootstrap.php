@@ -8,9 +8,13 @@
 
 try {
 
-    // Load from within this Package
-    $dotenv = Dotenv\Dotenv::create(__DIR__ . '/../');
-    $dotenv->load();
+    if(is_readable(__DIR__ . '/../.env')) {
+
+        // Load from within this Package
+        $dotenv = Dotenv\Dotenv::create(__DIR__ . '/../');
+        $dotenv->load();
+
+    }
 
     if (is_readable(__DIR__ . '/../../../../.env')) {
 
@@ -20,7 +24,11 @@ try {
 
     }
 
-    $dotenv->required(['AITS_NETID_ASSIGNMENT_DATA_LOG_RELATIVE_PATH', 'AITS_NETID_ASSIGNMENT_DATA_LOG_FILE_PREFIX', 'AITS_NETID_ASSIGNMENT_AITS_SENDER_APP_ID', 'AITS_NETID_ASSIGNMENT_AITS_SERVICE_HOST'])->notEmpty();
+    if(!empty($dotenv)) {
+
+        $dotenv->required(['AITS_NETID_ASSIGNMENT_DATA_LOG_RELATIVE_PATH', 'AITS_NETID_ASSIGNMENT_DATA_LOG_FILE_PREFIX', 'AITS_NETID_ASSIGNMENT_AITS_SENDER_APP_ID', 'AITS_NETID_ASSIGNMENT_AITS_SERVICE_HOST'])->notEmpty();
+
+    }
 
 } catch (\Exception $e) {
 
