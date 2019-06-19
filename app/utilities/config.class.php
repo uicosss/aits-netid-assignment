@@ -6,7 +6,7 @@
  * Time: 3:27 PM
  */
 
-namespace App\utilities;
+namespace AitsNetidAssignment\utilities;
 
 
 class config

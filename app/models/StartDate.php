@@ -6,7 +6,7 @@
  * Time: 12:56 PM
  */
 
-namespace App\Model;
+namespace AitsNetidAssignment\Model;
 
 
 class StartDate

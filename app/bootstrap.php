@@ -6,14 +6,16 @@
  * Time: 11:19 AM
  */
 
-// Load the contents of ../.env
-try {
+// Load from within this Package
+$dotenv = Dotenv\Dotenv::create(__DIR__ . '/../');
+$dotenv->load();
 
-    $dotenv = Dotenv\Dotenv::create(__DIR__ . '/../');
-    $dotenv->load();
+if(is_readable(__DIR__ . '/../../../../.env')) {
 
-} catch (\Exception $e) {
-
-    return $e->getMessage();
+    // Try to load from the root of of a project that is using this package
+    $dotenv = Dotenv\Dotenv::create(__DIR__ . '/../../../../');
+    $dotenv->overload();
 
 }
+
+$dotenv->required(['AITS_NETID_ASSIGNMENT_DATA_LOG_RELATIVE_PATH', 'AITS_NETID_ASSIGNMENT_DATA_LOG_FILE_PREFIX', 'AITS_NETID_ASSIGNMENT_AITS_SENDER_APP_ID', 'AITS_NETID_ASSIGNMENT_AITS_SERVICE_HOST'])->notEmpty();

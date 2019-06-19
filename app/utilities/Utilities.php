@@ -6,7 +6,7 @@
  * Time: 12:34 AM
  */
 
-namespace App\Utilities;
+namespace AitsNetidAssignment\utilities;
 
 
 use Carbon\Carbon;
@@ -65,7 +65,8 @@ class Utilities
 
         }
 
-        $errorLog->pushHandler(new StreamHandler(__DIR__ . '/../../' . $_ENV['DATA_LOG_RELATIVE_PATH'] . '/' . $_ENV['DATA_LOG_FILE_PREFIX'] . 'error.log', constant('Monolog\Logger::' . strtoupper($level))));
+        // todo - Reference the current Composer project installation instead, if available
+        $errorLog->pushHandler(new StreamHandler(__DIR__ . '/../../' . $_ENV['AITS_NETID_ASSIGNMENT_DATA_LOG_RELATIVE_PATH'] . '/' . $_ENV['AITS_NETID_ASSIGNMENT_DATA_LOG_FILE_PREFIX'] . 'error.log', constant('Monolog\Logger::' . strtoupper($level))));
         $errorLog->{$level}($message);
 
     }

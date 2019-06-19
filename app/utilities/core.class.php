@@ -7,7 +7,7 @@
  * Time: 11:21 AM
  */
 
-namespace App\utilities;
+namespace AitsNetidAssignment\utilities;
 
 class core
 {
@@ -27,13 +27,13 @@ class core
     private function __construct()
     {
         // building data source name from config
-        $dsn = \App\utilities\config::read('db.driver') .
-            ':dbname=' . \App\utilities\config::read('db.basename') .
+        $dsn = \AitsNetidAssignment\utilities\config::read('db.driver') .
+            ':dbname=' . \AitsNetidAssignment\utilities\config::read('db.basename') .
             ';connect_timeout=15';
         // getting DB user from config
-        $user = \App\utilities\config::read('db.user');
+        $user = \AitsNetidAssignment\utilities\config::read('db.user');
         // getting DB password from config
-        $password = \App\utilities\config::read('db.password');
+        $password = \AitsNetidAssignment\utilities\config::read('db.password');
 
         $this->dbh = new \PDO($dsn, $user, $password);
         $this->dbh->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);

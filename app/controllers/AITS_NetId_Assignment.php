@@ -6,16 +6,17 @@
  * Time: 1:12 PM
  */
 
-namespace App\Controllers;
+namespace AitsNetidAssignment\Controllers;
 
 
-use App\Model\NetIdAssignment;
-use App\Utilities\Utilities;
+use AitsNetidAssignment\Model\NetIdAssignment;
+use AitsNetidAssignment\Utilities\Utilities;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 
 class AITS_NetId_Assignment
 {
+    /**
     /**
      * Method used to Query a NetId from AITS Web Service
      *
@@ -40,11 +41,11 @@ class AITS_NetId_Assignment
 
 
             $client = new Client([
-                'base_uri' => $_ENV['AITS_SERVICE_HOST']
+                'base_uri' => $_ENV['AITS_NETID_ASSIGNMENT_AITS_SERVICE_HOST']
             ]);
 
 // POST data
-            $response = $client->request('GET', '/xfunctionalWS/query/org.any_openeai_enterprise.moa.jmsobjects.coreapplication.v1_0.NetIdAssignment/' . $_ENV['AITS_SENDER_APP_ID'] . '/' . $NetId . '/' . $Domain, [
+            $response = $client->request('GET', '/xfunctionalWS/query/org.any_openeai_enterprise.moa.jmsobjects.coreapplication.v1_0.NetIdAssignment/' . $_ENV['AITS_NETID_ASSIGNMENT_AITS_SENDER_APP_ID'] . '/' . $NetId . '/' . $Domain, [
                 'headers' => [
                     'Content-type' => 'application/xml',
                     'Accept' => 'application/xml',
