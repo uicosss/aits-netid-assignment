@@ -10,7 +10,7 @@ namespace AitsNetidAssignment\Controllers;
 
 
 use AitsNetidAssignment\Model\NetIdAssignment;
-use AitsNetidAssignment\Utilities\Utilities;
+use AitsNetidAssignment\utilities\Utilities;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 
