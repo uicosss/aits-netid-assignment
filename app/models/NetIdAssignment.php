@@ -98,20 +98,26 @@ class NetIdAssignment
 
         }
 
-        // NetId
-        $NetId = new NetId();
-        $NetId->setFromArray($array['NetIdAssignment']['NetId']);
-        $this->setNetId($NetId);
+        if (!empty($array['NetIdAssignment']['NetId'])) {
+            // NetId
+            $NetId = new NetId();
+            $NetId->setFromArray($array['NetIdAssignment']['NetId']);
+            $this->setNetId($NetId);
+        }
 
-        // InstitutionalIdentity
-        $InstitutionalIdentity = new InstitutionalIdentity();
-        $InstitutionalIdentity->setFromArray($array['NetIdAssignment']['InstitutionalIdentity']);
-        $this->setInstitutionalIdentity($InstitutionalIdentity);
+        if (!empty($array['NetIdAssignment']['InstitutionalIdentity'])) {
+            // InstitutionalIdentity
+            $InstitutionalIdentity = new InstitutionalIdentity();
+            $InstitutionalIdentity->setFromArray($array['NetIdAssignment']['InstitutionalIdentity']);
+            $this->setInstitutionalIdentity($InstitutionalIdentity);
+        }
 
-        // StartDate
-        $StartDate = new StartDate();
-        $StartDate->setFromArray($array['NetIdAssignment']['StartDate']);
-        $this->setStartDate($StartDate);
+        if (!empty($array['NetIdAssignment']['StartDate'])) {
+            // StartDate
+            $StartDate = new StartDate();
+            $StartDate->setFromArray($array['NetIdAssignment']['StartDate']);
+            $this->setStartDate($StartDate);
+        }
 
     }
 
