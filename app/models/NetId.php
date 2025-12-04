@@ -69,15 +69,15 @@ class NetId
     public function setFromArray(Array $array)
     {
 
-        if(!empty($array['Principal'])) {
+        if(!empty($array['principal'])) {
 
-            $this->setPrincipal($array['Principal']);
+            $this->setPrincipal($array['principal']);
 
         }
 
-        if(!empty($array['Domain'])) {
+        if(!empty($array['domain'])) {
 
-            $this->setDomain($array['Domain']);
+            $this->setDomain($array['domain']);
 
         }
 

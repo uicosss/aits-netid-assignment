@@ -87,30 +87,20 @@ class UnknownPerson
     public function setFromArray(Array $array)
     {
 
-        if(!empty($array['Gender'])) {
-
-            $this->setGender($array['Gender']);
-
+        if(!empty($array['gender'])) {
+            $this->setGender($array['gender']);
         }
 
-        if(!empty($array['Name'])) {
-
-
+        if(!empty($array['name'])) {
             $Name = new Name();
-            $Name->setFromArray($array['Name']);
-
+            $Name->setFromArray($array['name']);
             $this->setName($Name);
-
         }
 
-        if(!empty($array['BirthDate'])) {
-
-
+        if(!empty($array['birthDate'])) {
             $BirthDate = new BirthDate();
-            $BirthDate->setFromArray($array['BirthDate']);
-
+            $BirthDate->setFromString($array['birthDate']);
             $this->setBirthDate($BirthDate);
-
         }
 
     }

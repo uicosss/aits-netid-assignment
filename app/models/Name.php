@@ -66,15 +66,15 @@ class Name
     public function setFromArray(Array $array)
     {
 
-        if(!empty($array['FirstName'])) {
+        if(!empty($array['firstName'])) {
 
-            $this->setFirstName($array['FirstName']);
+            $this->setFirstName($array['firstName']);
 
         }
 
-        if(!empty($array['LastName'])) {
+        if(!empty($array['lastName'])) {
 
-            $this->setLastName($array['LastName']);
+            $this->setLastName($array['lastName']);
 
         }
 

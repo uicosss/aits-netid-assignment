@@ -66,20 +66,14 @@ class InstitutionalIdentity
     public function setFromArray(Array $array)
     {
 
-        if(!empty($array['InstitutionalId'])) {
-
-            $this->setInstitutionalId($array['InstitutionalId']);
-
+        if(!empty($array['institutionalId'])) {
+            $this->setInstitutionalId($array['institutionalId']);
         }
 
-        if(!empty($array['UnknownPerson'])) {
-
-
+        if(!empty($array['unknownPerson'])) {
             $UnknownPerson = new UnknownPerson();
-            $UnknownPerson->setFromArray($array['UnknownPerson']);
-
+            $UnknownPerson->setFromArray($array['unknownPerson']);
             $this->setUnknownPerson($UnknownPerson);
-
         }
 
     }

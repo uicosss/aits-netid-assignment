@@ -80,42 +80,37 @@ class NetIdAssignment
         $this->StartDate = $StartDate;
     }
 
-    /**
-     * Void method used to set the object from a NetIdAssignment XML string
-     *
-     * @param String $xml
-     */
-    public function setFromXML($xml)
+    public function setFromJson($json)
     {
 
-        $xml = simplexml_load_string($xml);
-        $json = json_encode($xml);
         $array = json_decode($json,TRUE);
 
         if(empty($array)) {
-
-            throw new \Exception('Parsed XML Object cannot be empty');
-
+            throw new \Exception('Parsed JSON Object cannot be empty');
         }
 
-        if (!empty($array['NetIdAssignment']['NetId'])) {
+        if(empty($array['list'])) {
+            throw new \Exception('Parsed JSON Object list cannot be empty');
+        }
+
+        if (!empty($array['list'][0]['netId'])) {
             // NetId
             $NetId = new NetId();
-            $NetId->setFromArray($array['NetIdAssignment']['NetId']);
+            $NetId->setFromArray($array['list'][0]['netId']);
             $this->setNetId($NetId);
         }
 
-        if (!empty($array['NetIdAssignment']['InstitutionalIdentity'])) {
+        if (!empty($array['list'][0]['institutionalIdentity'])) {
             // InstitutionalIdentity
             $InstitutionalIdentity = new InstitutionalIdentity();
-            $InstitutionalIdentity->setFromArray($array['NetIdAssignment']['InstitutionalIdentity']);
+            $InstitutionalIdentity->setFromArray($array['list'][0]['institutionalIdentity']);
             $this->setInstitutionalIdentity($InstitutionalIdentity);
         }
 
-        if (!empty($array['NetIdAssignment']['StartDate'])) {
+        if (!empty($array['list'][0]['startDate'])) {
             // StartDate
             $StartDate = new StartDate();
-            $StartDate->setFromArray($array['NetIdAssignment']['StartDate']);
+            $StartDate->setFromString($array['list'][0]['startDate']);
             $this->setStartDate($StartDate);
         }
 

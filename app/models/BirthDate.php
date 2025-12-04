@@ -9,73 +9,34 @@
 namespace AitsNetidAssignment\Model;
 
 
+use Carbon\Carbon;
+
 class BirthDate
 {
     /**
-     * @var Int
+     * @var Carbon
      */
-    public $Month;
-
-    /**
-     * @var Int
-     */
-    public $Day;
-
-    /**
-     * @var Int
-     */
-    public $Year;
+    public Carbon $Date;
 
     public function __construct()
     {
     }
 
     /**
-     * @return Int
+     * @param $dateString
+     * @return void
      */
-    public function getMonth()
+    public function setDate($dateString)
     {
-        return $this->Month;
+        $this->Date = Carbon::parse($dateString);
     }
 
     /**
-     * @param Int $Month
+     * @return Carbon
      */
-    public function setMonth($Month)
+    public function getDate()
     {
-        $this->Month = $Month;
-    }
-
-    /**
-     * @return Int
-     */
-    public function getDay()
-    {
-        return $this->Day;
-    }
-
-    /**
-     * @param Int $Day
-     */
-    public function setDay($Day)
-    {
-        $this->Day = $Day;
-    }
-
-    /**
-     * @return Int
-     */
-    public function getYear()
-    {
-        return $this->Year;
-    }
-
-    /**
-     * @param Int $Year
-     */
-    public function setYear($Year)
-    {
-        $this->Year = $Year;
+        return $this->Date;
     }
 
     /**
@@ -83,27 +44,9 @@ class BirthDate
      *
      * @param array $array
      */
-    public function setFromArray(Array $array)
+    public function setFromString($string)
     {
-
-        if(!empty($array['Month'])) {
-
-            $this->setMonth($array['Month']);
-
-        }
-
-        if(!empty($array['Day'])) {
-
-            $this->setDay($array['Day']);
-
-        }
-
-        if(!empty($array['Year'])) {
-
-            $this->setYear($array['Year']);
-
-        }
-
+        $this->setDate($string);
     }
 
 }

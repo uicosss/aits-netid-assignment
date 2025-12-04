@@ -13,6 +13,7 @@ use AitsNetidAssignment\Model\NetIdAssignment;
 use AitsNetidAssignment\utilities\Utilities;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Psr7\Request;
 
 class AITS_NetId_Assignment
 {
@@ -27,43 +28,34 @@ class AITS_NetId_Assignment
      */
     public static function getNetIdAssignment($NetId, $Domain = 'uic.edu')
     {
-
-
-        $netIdAssignment = new NetIdAssignment();
-
         try {
 
             if(empty($NetId)) {
-
                 throw new \Exception('NetId must be provided.');
-
             }
 
+            $client = new Client();
 
-            $client = new Client([
-                'base_uri' => $_ENV['AITS_NETID_ASSIGNMENT_AITS_SERVICE_HOST']
+            $apiEndpoint = $_ENV['AITS_AZURE_NETID_ASSIGNMENT_API_URL'] . '/' . $NetId . '/' . $Domain;
+
+            $request = new Request('GET', $apiEndpoint, [
+                'Cache-Control' => 'no-cache',
+                'Ocp-Apim-Subscription-Key' => $_ENV['AITS_AZURE_NETID_ASSIGNMENT_PRIMARY_KEY']
             ]);
 
-// POST data
-            $response = $client->request('GET', '/xfunctionalWS/query/org.any_openeai_enterprise.moa.jmsobjects.coreapplication.v1_0.NetIdAssignment/' . $_ENV['AITS_NETID_ASSIGNMENT_AITS_SENDER_APP_ID'] . '/' . $NetId . '/' . $Domain, [
-                'headers' => [
-                    'Content-type' => 'application/xml',
-                    'Accept' => 'application/xml',
-                ]
-            ]);
+            $response = $client->send($request);
 
-            if ($response->getStatusCode('content-type') == 200) {
-
-                $xmlstring = $response->getBody()->getContents();
-
-                $netIdAssignment->setFromXML($xmlstring);
-
+            if ($response->getStatusCode('content-type') != 200) {
+                throw new \Exception('API request was not successful.');
             }
+
+            $json = $response->getBody()->getContents();
+            $netIdAssignment = new NetIdAssignment();
+            $netIdAssignment->setFromJson($json);
 
             return $netIdAssignment;
 
         } catch (ClientException $e) {
-
             $response = $e->getResponse();
             $responseBodyAsString = $response->getBody()->getContents();
 
@@ -71,22 +63,16 @@ class AITS_NetId_Assignment
                 print_r($responseBodyAsString);
                 echo PHP_EOL;
             }
-
             Utilities::SaveToErrorLog($responseBodyAsString, 'error', 'error');
-
         } catch (\Exception $e) {
-
             if(Utilities::is_cli()) {
                 print_r($e->getMessage());
                 echo PHP_EOL;
             }
-
             Utilities::SaveToErrorLog($e->getMessage(), 'warning', 'error');
-
         }
 
         return false;
-
     }
 
 }
