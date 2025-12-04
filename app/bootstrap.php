@@ -18,7 +18,7 @@ try {
 
     if (is_readable(__DIR__ . '/../../../../.env')) {
 
-        // Try to load from the root of of a project that is using this package
+        // Try to load from the root of a project that is using this package
         $dotenv = Dotenv\Dotenv::create(__DIR__ . '/../../../../');
         $dotenv->overload();
 
